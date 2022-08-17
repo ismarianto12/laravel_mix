@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Models\pegawai;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,6 +26,23 @@ Route::group(['middleware' => ['auth', 'api']], function () {
     });
     Route::get('barang', function () {
         return Inertia::render('Barang/Index');
+    });
+
+    Route::get('pegawai', function () {
+        $pegawai = pegawai::orderBy('id')->paginate()->appends(Request::all());
+        return Inertia::render('Pegawai/index',
+            [
+                'filters' => Request::all('search', 'trashed'),
+                'pegawai' => $pegawai,
+            ]
+        );
+    });
+
+    Route::get('pegawai_create', function () {
+        return Inertia::render('Pegawai/form',
+            ['title' => 'tambah data pegawai',
+            ]
+        );
     });
 
 });

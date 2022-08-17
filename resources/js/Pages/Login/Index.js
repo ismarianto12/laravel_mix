@@ -1,20 +1,29 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Inertia } from '@inertiajs/inertia';
-import { useForm } from '@inertiajs/inertia-react';
+import React, { useState } from 'react'
+import { Helmet } from 'react-helmet'
+import { Inertia } from '@inertiajs/inertia'
+import { useForm, usePage } from '@inertiajs/inertia-react'
 import route from "ziggy-js";
 const Login = () => {
- 
-    const { data, setData, errors, post, processing } = useForm({
+    const { errors } = usePage().props;
+
+    const { data, setData, post, processing } = useForm({
         username: '',
         password: '',
         remember: true
     });
 
+    const [ket, setKet] = useState('');
+
     function handleSubmit(e) {
+
         e.preventDefault();
         post('login_attempt');
-    } 
+        console.log(errors.username)
+        // setKet(errors);
+    }
+
+
+    // const ket 
     return (<>
         <Helmet>
             <title>Login App</title>
@@ -26,6 +35,7 @@ const Login = () => {
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" className="w-full" alt="Sample image" />
                     </div>
                     <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+
                         <form onSubmit={handleSubmit}>
                             <div className="flex flex-row items-center justify-center lg:justify-start">
                                 <p className="text-lg mb-0 mr-4">Sign in with</p>
@@ -57,10 +67,14 @@ const Login = () => {
                             {/* Email input */}
                             <div className="mb-6">
                                 <input type="text" onChange={e => setData('username', e.target.value)} errors={errors.username} className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Email address" />
+                                {errors.username}
                             </div>
+
                             {/* Password input */}
                             <div className="mb-6">
-                                <input type="password" onChange={e => setData('password', e.target.value)}  errors={errors.password} className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Password" />
+                                <input type="password" onChange={e => setData('password', e.target.value)} errors={errors.password} className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Password" />
+                                {errors.password}
+
                             </div>
                             <div className="flex justify-between items-center mb-6">
                                 <div className="form-group form-check">

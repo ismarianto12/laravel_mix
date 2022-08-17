@@ -115,7 +115,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Barang_Index_js":1,"resources_js_Pages_Home_Index_js":1,"resources_js_Pages_Login_Index_js":1,"resources_js_Pages_User_Index_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Barang_Index_js":1,"resources_js_Pages_Home_Index_js":1,"resources_js_Pages_Login_Index_js":1,"resources_js_Pages_Pegawai_index_js":1,"resources_js_Pages_Pegawai_form_js":1,"resources_js_Pages_User_Index_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
@@ -216,6 +216,15 @@
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nmd = (module) => {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
 /******/ 		};
 /******/ 	})();
 /******/ 	
