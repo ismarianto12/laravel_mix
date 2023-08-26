@@ -20,9 +20,12 @@ use Inertia\Inertia;
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('/');
 Route::post('login_attempt', [LoginController::class, 'login'])->name('login_attempt');
-Route::group(['middleware' => ['auth', 'api']], function () {
+Route::group(['middleware' => ['api']], function () {
     Route::get('home', function () {
         return Inertia::render('Home/Index');
+    });
+    Route::get('Contactinfo', function () {
+        return Inertia::render('Contactinfo/Index');
     });
     Route::get('barang', function () {
         return Inertia::render('Barang/Index');
@@ -44,6 +47,7 @@ Route::group(['middleware' => ['auth', 'api']], function () {
             ]
         );
     });
+    Route::post('/save-contact-info', 'ContactInfoController@store');
 
 });
 

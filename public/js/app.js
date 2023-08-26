@@ -47,6 +47,14 @@ var map = {
 		"/js/vendor",
 		"resources_js_Pages_Barang_Index_js"
 	],
+	"./Contactinfo/Index": [
+		"./resources/js/Pages/Contactinfo/Index.jsx",
+		"resources_js_Pages_Contactinfo_Index_jsx"
+	],
+	"./Contactinfo/Index.jsx": [
+		"./resources/js/Pages/Contactinfo/Index.jsx",
+		"resources_js_Pages_Contactinfo_Index_jsx"
+	],
 	"./Home/Index": [
 		"./resources/js/Pages/Home/Index.js",
 		"/js/vendor",
